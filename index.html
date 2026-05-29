@@ -366,8 +366,106 @@
   }
 
 </style>
+<style>
+  #login-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Noto Sans TC', 'Noto Serif TC', sans-serif;
+  }
+  #login-box {
+    background: #1e293b;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 2.5rem 2rem 2rem;
+    width: min(360px, 90vw);
+    box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+    text-align: center;
+  }
+  #login-box .login-icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+  #login-box h2 {
+    color: #f1f5f9;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.04em;
+  }
+  #login-box p {
+    color: #64748b;
+    font-size: 0.78rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.03em;
+  }
+  #login-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.05);
+    color: #f1f5f9;
+    font-size: 1.25rem;
+    letter-spacing: 0.2em;
+    text-align: center;
+    outline: none;
+    transition: border-color .2s;
+    font-family: monospace;
+    -webkit-text-security: disc;
+    appearance: none;
+  }
+  #login-input::placeholder { color: #475569; letter-spacing: 0.1em; }
+  #login-input:focus { border-color: rgba(99,179,237,0.6); }
+  #login-input.shake {
+    animation: shake .35s ease;
+    border-color: #f87171;
+  }
+  @keyframes shake {
+    0%,100%{transform:translateX(0)}
+    20%{transform:translateX(-8px)}
+    40%{transform:translateX(8px)}
+    60%{transform:translateX(-5px)}
+    80%{transform:translateX(5px)}
+  }
+  #login-btn {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 10px;
+    border: none;
+    background: #3b82f6;
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.06em;
+    transition: background .2s, transform .1s;
+  }
+  #login-btn:hover { background: #2563eb; }
+  #login-btn:active { transform: scale(0.97); }
+  #login-error {
+    margin-top: 0.75rem;
+    color: #f87171;
+    font-size: 0.78rem;
+    min-height: 1.1em;
+    letter-spacing: 0.02em;
+  }
+</style>
+<style>
+  body:not(.unlocked) #main-content { display: none !important; }
+  body.unlocked #login-overlay { display: none !important; }
+</style>
 </head>
 <body>
+<div id="main-content">
+
 <header>
 <div class="header-label">115年度 ／ 機電事業群</div>
 <h1>重要業主及工區<br/>拜會行程</h1>
@@ -1159,5 +1257,69 @@
 <footer>
   115年度機電事業群東部及南部重要業主拜會 ／ 行程版本：0526 更新
 </footer>
-<button aria-label="回到頂端" class="mobile-top" onclick='window.scrollTo({top:0,behavior:"smooth"})'>↑</button></body>
+<button aria-label="回到頂端" class="mobile-top" onclick='window.scrollTo({top:0,behavior:"smooth"})'>↑</button>
+</div>
+
+<!-- ======== LOGIN OVERLAY ======== -->
+
+
+<div id="login-overlay">
+  <div id="login-box">
+    <span class="login-icon">🔒</span>
+
+    <input
+      id="login-input"
+      type="password"
+      inputmode="numeric"
+      maxlength="8"
+      placeholder="請輸入密碼"
+      autocomplete="off"
+      autofocus
+    />
+    <button id="login-btn" onclick="checkPassword()">確認進入</button>
+    <div id="login-error"></div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    // Wrap entire body content (non-overlay) in #main-content div
+    // Already handled via CSS: #main-content hidden until unlocked.
+
+    var PASS = '06010603';
+    var KEY  = 'itinerary_auth_0603';
+
+    function unlock() {
+      document.body.classList.add('unlocked');
+    }
+
+    // Check session storage on load
+    try {
+      if (sessionStorage.getItem(KEY) === '1') { unlock(); return; }
+    } catch(e) {}
+
+    window.checkPassword = function() {
+      var val = document.getElementById('login-input').value.trim();
+      if (val === PASS) {
+        try { sessionStorage.setItem(KEY, '1'); } catch(e) {}
+        unlock();
+      } else {
+        var inp = document.getElementById('login-input');
+        inp.classList.remove('shake');
+        void inp.offsetWidth; // reflow
+        inp.classList.add('shake');
+        document.getElementById('login-error').textContent = '密碼錯誤，請再試一次';
+        inp.value = '';
+        inp.focus();
+      }
+    };
+
+    // Allow Enter key
+    document.getElementById('login-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') window.checkPassword();
+    });
+  })();
+</script>
+
+</body>
 </html>
