@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>0601–0603 拜會行程｜手機閱讀版</title>
+<title>0601–0603 拜會行程</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&amp;family=Noto+Sans+TC:wght@300;400;500&amp;family=DM+Serif+Display&amp;display=swap" rel="stylesheet"/>
 <style>
   *, *::before, *::after { box-sizing: border-box; }
@@ -79,6 +79,106 @@
   .quick-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 0}.quick-summary a{text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 8px;text-align:center;color:var(--ink);font-size:12px;font-weight:900}.quick-summary strong{display:block;font-size:18px;color:var(--accent)}
   @media (min-width:760px){header{padding:34px 40px}.header-meta{grid-template-columns:repeat(5,1fr)}main{padding:28px 24px 64px}.agency-grid{grid-template-columns:repeat(2,1fr)}.agency-card[style]{grid-column:span 2!important}.agency-persons[style]{display:grid!important;grid-template-columns:1fr 1fr!important}.dinner-tables-row{grid-template-columns:repeat(3,1fr)}.dinner-table-col{border-bottom:0;border-right:1px solid var(--line)}.dinner-table-col:last-child{border-right:0}.event{grid-template-columns:120px 1fr auto}.event-time{grid-column:auto}.seating-img-wrap img{width:100%;max-width:780px}.quick-summary{max-width:560px}}
   @media print{body{background:white}nav,.mobile-top,.quick-summary{display:none}header,main,footer{background:white}.day-block,.agency-card,.dinner-card-wide,.seating-block,.agenda-block{box-shadow:none;break-inside:avoid}.event,.person-row,.dinner-person{break-inside:avoid}}
+
+
+  /* ========== HOTEL ROOM ARRANGEMENT ========== */
+  .room-block {
+    background: #ffffff;
+    border: 1px solid rgba(26, 58, 92, 0.16);
+    border-radius: 18px;
+    padding: 1.35rem;
+    margin-top: 2rem;
+    box-shadow: 0 10px 30px rgba(26, 58, 92, 0.08);
+  }
+  .room-label {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--day2);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.25rem;
+  }
+  .room-meta {
+    font-size: 0.76rem;
+    color: var(--ink-muted);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  .room-table-wrap { overflow-x: auto; border-radius: 14px; border: 1px solid rgba(26, 58, 92, 0.12); }
+  .room-table {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+    background: #fff;
+  }
+  .room-table th {
+    background: #dcebf7;
+    color: #12304f;
+    font-weight: 600;
+    padding: 0.7rem 0.65rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(26,58,92,0.22);
+  }
+  .room-table td {
+    padding: 0.62rem 0.65rem;
+    border-bottom: 1px solid rgba(26,58,92,0.10);
+    text-align: center;
+    color: var(--ink);
+  }
+  .room-table td:nth-child(2) { text-align: left; font-weight: 500; }
+  .room-table tr:nth-child(even) td { background: #f7fbff; }
+  .breakfast-ok {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.45rem;
+    height: 1.45rem;
+    border-radius: 999px;
+    background: #e4f3ea;
+    color: #1f6a3a;
+    font-weight: 700;
+    font-size: 0.75rem;
+  }
+  .room-note {
+    margin-top: 0.8rem;
+    font-size: 0.74rem;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+  @media (max-width: 640px) {
+    .room-block { padding: 1rem; border-radius: 16px; }
+    .room-table { min-width: 0; border-collapse: separate; border-spacing: 0 0.65rem; background: transparent; }
+    .room-table thead { display: none; }
+    .room-table, .room-table tbody, .room-table tr, .room-table td { display: block; width: 100%; }
+    .room-table-wrap { overflow: visible; border: none; }
+    .room-table tr {
+      background: #ffffff;
+      border: 1px solid rgba(26,58,92,0.14);
+      border-radius: 14px;
+      padding: 0.72rem 0.85rem;
+      box-shadow: 0 6px 18px rgba(26,58,92,0.06);
+    }
+    .room-table td {
+      border-bottom: none;
+      padding: 0.22rem 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: right;
+      background: transparent !important;
+    }
+    .room-table td::before {
+      content: attr(data-label);
+      color: var(--ink-muted);
+      font-size: 0.75rem;
+      font-weight: 400;
+      text-align: left;
+      flex-shrink: 0;
+    }
+    .room-table td:nth-child(2) { text-align: right; }
+  }
+
 </style>
 </head>
 <body>
@@ -600,7 +700,7 @@
 <span class="section-number">04</span>
 <div>
 <div class="section-title">花蓮縣政府－拜會細節</div>
-<div class="section-subtitle">座位安排、會議流程、禮品致贈名單</div>
+<div class="section-subtitle">座位安排、會議流程、禮品致贈名單、住宿安排</div>
 </div>
 </div>
 <!-- SEATING DIAGRAM -->
@@ -664,7 +764,9 @@
 <tr><td class="gift-num">17</td><td colspan="4" style="color:var(--ink-muted); font-style:italic; font-size:0.78rem;">備用（待安排）</td></tr>
 </tbody>
 </table>
- <!-- HOTEL ROOM ARRANGEMENT -->
+
+
+<!-- HOTEL ROOM ARRANGEMENT -->
 <div class="room-block" id="hotel-rooms">
   <div class="room-label">第一晚住宿－福容大飯店房號安排</div>
   <div class="room-meta">6月1日（一）晚間住宿｜早餐房與共用早餐房號整理</div>
