@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>0601–0603 拜會行程</title>
+<title>0601–0603 拜會行程｜手機閱讀版</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&amp;family=Noto+Sans+TC:wght@300;400;500&amp;family=DM+Serif+Display&amp;display=swap" rel="stylesheet"/>
 <style>
   *, *::before, *::after { box-sizing: border-box; }
@@ -177,6 +177,192 @@
       flex-shrink: 0;
     }
     .room-table td:nth-child(2) { text-align: right; }
+  }
+
+
+  /* ========== HOTEL ROOM TABLE ========== */
+  .hotel-block {
+    background: #fff;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 22px;
+    padding: 1.15rem;
+    margin-top: 1.25rem;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.04);
+  }
+  .hotel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .hotel-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #3157c9;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+  }
+  .hotel-meta {
+    margin-top: 0.25rem;
+    font-size: 0.82rem;
+    color: #475569;
+    line-height: 1.6;
+  }
+  .hotel-table-wrap {
+    overflow-x: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    background: #fff;
+    -webkit-overflow-scrolling: touch;
+  }
+  .hotel-table {
+    width: 100%;
+    min-width: 620px;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+  .hotel-table th {
+    text-align: left;
+    padding: 0.75rem 0.85rem;
+    background: #f1f6ff;
+    color: #334155;
+    font-weight: 700;
+    border-bottom: 1px solid #dbe5f3;
+    white-space: nowrap;
+  }
+  .hotel-table td {
+    padding: 0.72rem 0.85rem;
+    border-bottom: 1px solid #edf2f7;
+    color: #0f172a;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .hotel-table tbody tr:last-child td { border-bottom: none; }
+  .hotel-table tbody tr:nth-child(even) { background: #fbfdff; }
+  .hotel-num {
+    color: #94a3b8;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .hotel-name { font-weight: 700; }
+  .breakfast-yes {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.65rem;
+    height: 1.65rem;
+    border-radius: 999px;
+    background: #e7f6ee;
+    color: #16703b;
+    font-weight: 800;
+  }
+  .muted-dash { color: #94a3b8; }
+
+  @media (max-width: 640px) {
+    .hotel-block {
+      padding: 1rem;
+      border-radius: 20px;
+    }
+    .hotel-title {
+      font-size: 1rem;
+    }
+    .hotel-meta {
+      font-size: 0.78rem;
+    }
+    .hotel-table {
+      min-width: 560px;
+      font-size: 0.9rem;
+    }
+    .hotel-table th,
+    .hotel-table td {
+      padding: 0.68rem 0.72rem;
+    }
+  }
+
+
+  /* ========== TABLE CAPTION ========== */
+  .table-caption {
+    margin: 1.1rem 0 0.75rem;
+    padding: 0.95rem 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    border-radius: 16px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  }
+  .table-caption-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #3157c9;
+    letter-spacing: 0.02em;
+  }
+  .table-caption-meta {
+    margin-top: 0.18rem;
+    font-size: 0.78rem;
+    color: #64748b;
+    line-height: 1.55;
+  }
+
+
+  /* ========== MERGED TABLE CARDS ========== */
+  .merged-table-card {
+    background: #fff;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 22px;
+    overflow: hidden;
+    margin: 1.1rem 0 1.5rem;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.035);
+  }
+  .merged-table-card .table-caption {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    padding: 1.05rem 1.15rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .merged-table-card .table-caption-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #3157c9;
+    letter-spacing: 0.02em;
+  }
+  .merged-table-card .table-caption-meta {
+    margin-top: 0.22rem;
+    font-size: 0.8rem;
+    color: #64748b;
+    line-height: 1.55;
+  }
+  .merged-table-card .table-scroll,
+  .merged-table-card .gift-table-wrap,
+  .merged-table-card .hotel-table-wrap {
+    overflow-x: auto;
+    border: 0;
+    border-radius: 0;
+    -webkit-overflow-scrolling: touch;
+  }
+  .merged-table-card table {
+    margin: 0;
+  }
+  .merged-table-card .gift-table {
+    min-width: 760px;
+  }
+
+  /* merge hotel table block too */
+  .hotel-block.merged-table-card {
+    padding: 0;
+  }
+  .hotel-block.merged-table-card .hotel-heading {
+    margin: 0;
+    padding: 1.05rem 1.15rem;
+    border-bottom: 1px solid #e2e8f0;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  }
+  .hotel-block.merged-table-card .hotel-table-wrap {
+    border: 0;
+    border-radius: 0;
   }
 
 </style>
@@ -699,8 +885,8 @@
 <div class="section-header">
 <span class="section-number">04</span>
 <div>
-<div class="section-title">花蓮縣政府－拜會細節</div>
-<div class="section-subtitle">座位安排、會議流程、禮品致贈名單、住宿安排</div>
+<div class="section-title">花蓮縣政府－禮品致贈清單</div>
+<div class="section-subtitle">花蓮縣政府建設處、地政處 ／ 共 17 人（含備用）</div>
 </div>
 </div>
 <!-- SEATING DIAGRAM -->
@@ -733,6 +919,15 @@
 </tbody>
 </table>
 </div>
+
+    <div class="gift-card merged-table-card">
+
+    <div class="table-caption gift-caption">
+      <div class="table-caption-title">交際禮品清單</div>
+      <div class="table-caption-meta">花蓮縣政府建設處、地政處｜拜會時贈送與另外給名單</div>
+    </div>
+
+      <div class="table-scroll">
 <table class="gift-table">
 <thead>
 <tr>
@@ -764,6 +959,9 @@
 <tr><td class="gift-num">17</td><td colspan="4" style="color:var(--ink-muted); font-style:italic; font-size:0.78rem;">備用（待安排）</td></tr>
 </tbody>
 </table>
+      </div>
+    </div>
+
 
 
 <!-- HOTEL ROOM ARRANGEMENT -->
@@ -798,6 +996,113 @@
   </div>
   <div class="room-note">註：未標示為早餐房者，早餐房號欄位為共用早餐房。</div>
 </div>
+
+
+    
+
+
+
+
+    <div class="hotel-block merged-table-card">
+      <div class="hotel-heading">
+        <div>
+          <div class="hotel-title">第一晚住宿－福容大飯店房號安排</div>
+          <div class="hotel-meta">6月1日（一）晚間住宿｜早餐房與共用早餐房號整理</div>
+        </div>
+      </div>
+      <div class="hotel-table-wrap">
+        <table class="hotel-table">
+          <thead>
+            <tr>
+              <th>序號</th>
+              <th>姓名</th>
+              <th>房號</th>
+              <th>早餐房</th>
+              <th>早餐房號</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="hotel-num">01</td>
+              <td class="hotel-name">王子安</td>
+              <td>1109</td>
+              <td><span class="breakfast-yes">✓</span></td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td class="hotel-num">02</td>
+              <td class="hotel-name">鄭宏逵</td>
+              <td>1128</td>
+              <td><span class="breakfast-yes">✓</span></td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td class="hotel-num">03</td>
+              <td class="hotel-name">林啓豊</td>
+              <td>1129</td>
+              <td><span class="muted-dash">—</span></td>
+              <td>1128</td>
+            </tr>
+            <tr>
+              <td class="hotel-num">04</td>
+              <td class="hotel-name">陳彥均</td>
+              <td>1105</td>
+              <td><span class="breakfast-yes">✓</span></td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td class="hotel-num">05</td>
+              <td class="hotel-name">莊佑翔</td>
+              <td>928</td>
+              <td><span class="muted-dash">—</span></td>
+              <td>1105</td>
+            </tr>
+            <tr>
+              <td class="hotel-num">06</td>
+              <td class="hotel-name">范景皓</td>
+              <td>1103</td>
+              <td><span class="breakfast-yes">✓</span></td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td class="hotel-num">07</td>
+              <td class="hotel-name">張智華</td>
+              <td>929</td>
+              <td><span class="muted-dash">—</span></td>
+              <td>1103</td>
+            </tr>
+            <tr>
+              <td class="hotel-num">08</td>
+              <td class="hotel-name">陳聖堯</td>
+              <td>1102</td>
+              <td><span class="breakfast-yes">✓</span></td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td class="hotel-num">09</td>
+              <td class="hotel-name">吳錫賢</td>
+              <td>930</td>
+              <td><span class="muted-dash">—</span></td>
+              <td>1102</td>
+            </tr>
+            <tr>
+              <td class="hotel-num">10</td>
+              <td class="hotel-name">李明儒</td>
+              <td>1101</td>
+              <td><span class="breakfast-yes">✓</span></td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td class="hotel-num">11</td>
+              <td class="hotel-name">鄭渝暄</td>
+              <td>905</td>
+              <td><span class="muted-dash">—</span></td>
+              <td>1101</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
 </section>
 </main>
